@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.ScreenShout" parent="android:Theme.Material.Light.DarkActionBar">
+        <item name="android:background">@color/purple_200</item>
+        <item name="android:textColor">@color/black</item>
+
+        <item name="android:windowTranslucentStatus">false</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.ScreenShout.NameActivity" parent="android:Theme.Material.NoActionBar">
+    <item name="android:background">@color/purple_200</item>
+    <item name="android:textColor">@color/black</item>
+    </style>
+</resources>
