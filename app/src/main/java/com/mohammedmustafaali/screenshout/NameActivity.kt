@@ -1,4 +1,4 @@
-package com.example.screenshout
+package com.mohammedmustafaali.screenshout
 
 import AutoResizedText
 import androidx.compose.runtime.*
@@ -6,8 +6,11 @@ import android.app.Activity
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -38,12 +41,29 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
-import com.example.screenshout.ui.theme.ScreenShoutTheme
+import com.mohammedmustafaali.screenshout.ui.theme.ScreenShoutTheme
 
 class NameActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(
+                ContextCompat.getColor(this, R.color.transparent),
+                ContextCompat.getColor(this, R.color.transparent)
+            ),
+            navigationBarStyle = SystemBarStyle.light(
+                ContextCompat.getColor(this, R.color.transparent),
+                ContextCompat.getColor(this, R.color.transparent)
+            )
+        )
         super.onCreate(savedInstanceState)
+
+        // Set the layoutInDisplayCutoutMode flag
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+            window.attributes.layoutInDisplayCutoutMode =
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+        }
 
         setContent {
             ScreenShoutTheme {
@@ -62,7 +82,7 @@ class NameActivity : ComponentActivity() {
                     window.navigationBarColor = color.toArgb()
                 }
 
-                hideSystemUI()
+                //hideSystemUI()
             }
         }
     }
@@ -94,7 +114,6 @@ fun MainDisplay(color: Color, enteredText: String, onRotateClick: () -> Unit) {
     LaunchedEffect(Unit) {
         visible = true
     }
-
     Box {
 
         Column(
@@ -204,33 +223,6 @@ fun CheckOrientationNameDisplay(color: Color, enteredText: String, onRotateClick
 }
 
 
-
-@Composable
-fun AutoResizedText2(
-    text: String,
-    modifier: Modifier = Modifier,
-    initialTextStyle: TextStyle,
-) {
-    var textStyle by remember { mutableStateOf(initialTextStyle) }
-    var readyToDraw by remember { mutableStateOf(false) }
-
-    Text(
-        text = text,
-        style = textStyle,
-        maxLines = 1,
-        overflow = TextOverflow.Clip,
-        modifier = modifier.drawWithContent {
-            if (readyToDraw) drawContent()
-        },
-        onTextLayout = { textLayoutResult ->
-            if (textLayoutResult.didOverflowHeight) {
-                textStyle = textStyle.copy(fontSize = textStyle.fontSize * 0.9)
-            } else {
-                readyToDraw = true
-            }
-        }
-    )
-}
 
 @Preview(showBackground = true, device = "spec:width=411dp,height=891dp,orientation=landscape")
 @Composable

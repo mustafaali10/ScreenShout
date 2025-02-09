@@ -1,4 +1,4 @@
-package com.example.screenshout.ui.theme
+package com.mohammedmustafaali.screenshout.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

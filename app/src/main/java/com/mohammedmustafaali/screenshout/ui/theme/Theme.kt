@@ -1,4 +1,4 @@
-package com.example.screenshout.ui.theme
+package com.mohammedmustafaali.screenshout.ui.theme
 
 import android.app.Activity
 import android.os.Build

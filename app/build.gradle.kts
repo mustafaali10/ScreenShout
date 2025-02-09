@@ -4,15 +4,15 @@ plugins {
 }
 
 android {
-    namespace = "com.example.screenshout"
+    namespace = "com.mohammedmustafaali.screenshout"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.screenshout"
+        applicationId = "com.mohammedmustafaali.screenshout"
         minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        targetSdk = 34
+        versionCode = 3
+        versionName = "1.2"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -22,7 +22,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isShrinkResources = true
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -50,7 +51,7 @@ android {
 }
 
 dependencies {
-
+    //implementation("androidx.activity:activity-ktx:1.10.0")
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.activity:activity-compose:1.8.0")

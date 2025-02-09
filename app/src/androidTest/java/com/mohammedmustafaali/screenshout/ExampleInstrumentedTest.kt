@@ -1,4 +1,4 @@
-package com.example.screenshout
+package com.mohammedmustafaali.screenshout
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

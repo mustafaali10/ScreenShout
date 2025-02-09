@@ -1,10 +1,13 @@
-package com.example.screenshout
+package com.mohammedmustafaali.screenshout
 
 import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,17 +18,32 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
-import com.example.screenshout.ui.theme.LandscapeMainScreen
-import com.example.screenshout.ui.theme.ScreenShoutTheme
+import com.mohammedmustafaali.screenshout.ui.theme.LandscapeMainScreen
+import com.mohammedmustafaali.screenshout.ui.theme.ScreenShoutTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        enableEdgeToEdge(
+            statusBarStyle = SystemBarStyle.light(
+                ContextCompat.getColor(this, R.color.transparent),
+                ContextCompat.getColor(this, R.color.transparent)
+            ),
+            navigationBarStyle = SystemBarStyle.light(
+                ContextCompat.getColor(this, R.color.transparent),
+                ContextCompat.getColor(this, R.color.transparent)
+            )
+        )
         super.onCreate(savedInstanceState)
+        // Set the layoutInDisplayCutoutMode flag
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+            window.attributes.layoutInDisplayCutoutMode =
+                WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES
+        }
 
         setContent {
 
@@ -67,19 +85,19 @@ class MainActivity : ComponentActivity() {
             }
             }
 
-        hideSystemUI()
+        //hideSystemUI()
 
 
         }
 
-    private fun hideSystemUI() {
-        // Set flags to enable immersive sticky mode
-        window.decorView.systemUiVisibility = (
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-
-                )
-    }
+//    private fun hideSystemUI() {
+//        // Set flags to enable immersive sticky mode
+//        window.decorView.systemUiVisibility = (
+//                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+//                        or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//
+//                )
+//    }
     }
 
 @Composable

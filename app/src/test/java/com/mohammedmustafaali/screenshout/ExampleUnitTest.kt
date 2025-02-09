@@ -1,4 +1,4 @@
-package com.example.screenshout
+package com.mohammedmustafaali.screenshout
 
 import org.junit.Test
 

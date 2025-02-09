@@ -1,4 +1,4 @@
-package com.example.screenshout.ui.theme
+package com.mohammedmustafaali.screenshout.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
